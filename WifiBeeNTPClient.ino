@@ -5,16 +5,15 @@
 char ssid[] = "kvs";  //  your network SSID (name)
 char pass[] = "kluseczki##321";       // your network password
 
-const long utcOffsetInSeconds = 7200;
 WiFiUDP ntpUDP;
-NTPClient timeClient(ntpUDP, "pl.pool.ntp.org", utcOffsetInSeconds);
+NTPClient timeClient(ntpUDP, "pl.pool.ntp.org");
 
 
 void setup()
 {
   Serial.begin(115200);
 
-  Serial.println(ssid);
+//  Serial.println(ssid);
   WiFi.begin(ssid, pass);
   
   while (WiFi.status() != WL_CONNECTED) {
@@ -34,5 +33,5 @@ void loop()
   Serial.print("UNX");
   Serial.println(epoch);
   
-  delay(30000);
+  delay(3600000);
 }
